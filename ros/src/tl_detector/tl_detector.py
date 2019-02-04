@@ -132,10 +132,7 @@ class TLDetector(object):
         cv_image = self.bridge.imgmsg_to_cv2(self.camera_image, "bgr8")
 
         #Get classification
-        scores =  self.light_classifier.get_classification(cv_image)
-        for i in range(scores.size):
-            if scores[i] > 0.5:
-                rospy.logwarn("Found a traffic light[%d]=%f", i, float(scores[i]))
+        state =  self.light_classifier.get_classification(cv_image)
 
         # For testing, just return the light state
         return light.state
