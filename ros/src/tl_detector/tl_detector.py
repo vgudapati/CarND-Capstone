@@ -134,8 +134,9 @@ class TLDetector(object):
         #Get classification
         state =  self.light_classifier.get_classification(cv_image)
 
-        # For testing, just return the light state
-        return light.state
+        rospy.logwarn("Classified %d, ground truth %d\n", state, light.state)
+
+        return state
 
     def process_traffic_lights(self):
         """Finds closest visible traffic light, if one exists, and determines its

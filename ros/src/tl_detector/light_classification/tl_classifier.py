@@ -58,7 +58,12 @@ class TLClassifier(object):
 
             for i in range(boxes.shape[0]):
                 if (scores[i] > 0.5):
-                    return 100 + classes[i]
+                    if (classes[i] == 1):
+                        return TrafficLight.GREEN
+                    elif (classes[i] == 2):
+                        return TrafficLight.RED
+                    elif (classes[i] == 3):
+                        return TrafficLight.YELLOW
             # end for
         # end with
 
